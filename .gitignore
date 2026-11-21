@@ -48,3 +48,10 @@ next-env.d.ts
 
 # local env (keep the example)
 !.env.example
+
+# seed photo download cache
+/scripts/seed/.cache
+
+# supabase cli
+/supabase/.temp
+/supabase/.branches
