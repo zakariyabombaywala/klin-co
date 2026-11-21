@@ -23,6 +23,8 @@ let toasts: ToastRecord[] = [];
 const listeners = new Set<Listener>();
 let counter = 0;
 const MAX_VISIBLE = 3;
+// Must be the same array every call: React compares snapshots by reference.
+const SERVER_SNAPSHOT: ToastRecord[] = [];
 
 function emit() {
   for (const listener of listeners) listener();
@@ -37,7 +39,7 @@ export const toastStore = {
     return toasts;
   },
   getServerSnapshot(): ToastRecord[] {
-    return [];
+    return SERVER_SNAPSHOT;
   },
   dismiss(id: string) {
     toasts = toasts.map((t) => (t.id === id ? { ...t, open: false } : t));

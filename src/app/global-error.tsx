@@ -1,16 +1,13 @@
 "use client";
 
-import { Fraunces, Inter } from "next/font/google";
+import { fontVariables } from "@/lib/fonts";
 import { headScript } from "@/lib/head-script";
 import "./globals.css";
-
-const fraunces = Fraunces({ subsets: ["latin"], variable: "--font-fraunces", axes: ["opsz", "SOFT"] });
-const inter = Inter({ subsets: ["latin"], variable: "--font-inter" });
 
 /** Last-resort error page, shown when the root layout itself fails. */
 export default function GlobalError({ error, retry }: { error: Error & { digest?: string }; retry: () => void }) {
   return (
-    <html lang="en" data-theme="light" className={`${fraunces.variable} ${inter.variable}`} suppressHydrationWarning>
+    <html lang="en" data-theme="light" className={fontVariables} suppressHydrationWarning>
       <head>
         <script dangerouslySetInnerHTML={{ __html: headScript }} />
         <title>Something went wrong | Kiln &amp; Co.</title>
